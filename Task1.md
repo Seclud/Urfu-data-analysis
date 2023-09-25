@@ -40,6 +40,42 @@
 
 ## Задание 3.
 ### Оформить отчет в виде документации на github (markdown-разметка).
+<details>
+  <summary>Python code</summary>
+  
+  ```py
+  print("Hello World")
+  ```
+  
+</details>
+
+<details>
+  <summary>Unity code</summary>
+  
+  
+  ```cs
+  using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class HelloWorld : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        Debug.Log("Hello World");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+}
+
+  ```
+  
+</details>
 
 
 ## Выводы

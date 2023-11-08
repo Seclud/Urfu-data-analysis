@@ -101,7 +101,7 @@ for i, (time, gold) in enumerate(data, start=1):
 
 ![image](https://github.com/Seclud/Urfu-data-analysis/assets/82933148/82b6fa55-5ffa-472b-b89f-62ac6d537ecb) 
 <details>
-<summary>Код скрипта C# для звуков </summary>
+<summary>Код скрипта C# описания изменения переменной с помощью звуков </summary>
 
 ```cs
 using System.Collections;

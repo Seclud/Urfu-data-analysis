@@ -104,7 +104,7 @@ for i, (time, gold) in enumerate(data, start=1):
 <details>
 <summary>Код скрипта C# для звуков </summary>
 
-```
+```cs
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -200,7 +200,7 @@ public class NeedMoreGoldScreept : MonoBehaviour
 
 </details>
 
-
+[Ссылка на папку с проектом unity](https://github.com/Seclud/Urfu-data-analysis/tree/main/Task2/Lab2)
 
 ## Выводы
 

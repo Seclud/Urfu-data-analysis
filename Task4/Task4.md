@@ -1,5 +1,5 @@
 # АНАЛИЗ ДАННЫХ И ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ [in GameDev]
-Отчет по лабораторной работе #1 выполнил(а):
+Отчет по лабораторной работе #4 выполнил(а):
 - Тихонов Егор Станиславович
 - РИ-220947
 
@@ -81,12 +81,83 @@
 ## Задание 3
 ### Построить визуальную модель работы перцептрона на сцене Unity.
 
+![image](https://media.discordapp.net/attachments/914593555526320151/1179278586268614697/image.png?ex=657933c4&is=6566bec4&hm=6d168e6a496d76837b633dc4407caeaf304b7126da68ee8032394c7f535094da&=&format=webp&width=1247&height=662)
 
+#### Я создал сцену в unity с интерфейсом, где можно выбрать функцию, на основе которой обучался перцептрон и значение, подающиеся на вход. Левые кубики представляют входные данные, правый кубик - выходные
+
+<details>
+<summary>Скрипт для взаиомдействия с интерфейсом</summary>
+
+```cs
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class CubeController : MonoBehaviour
+{
+    public GameObject cube1;
+    public GameObject cube2;
+    public GameObject cube3;
+    public TMP_Dropdown functionDropdown;
+    public TMP_Dropdown input1Dropdown;
+    public TMP_Dropdown input2Dropdown;
+    public Perceptron perceptronAND;
+    public Perceptron perceptronOR;
+    public Perceptron perceptronNAND;
+    public Perceptron perceptronXOR;
+    private Perceptron activePerceptron;
+
+    void Start()
+    {
+        activePerceptron = perceptronOR;
+
+        functionDropdown.value = 0;
+        functionDropdown.RefreshShownValue();
+
+        input1Dropdown.value = 0;
+        input1Dropdown.RefreshShownValue();
+
+        input2Dropdown.value = 0;
+        input2Dropdown.RefreshShownValue();
+
+        functionDropdown.onValueChanged.AddListener(delegate { ChangeActivePerceptron(functionDropdown.value); UpdateOutputCubeColor(); });
+        input1Dropdown.onValueChanged.AddListener(delegate { UpdateCubeColor(cube1, input1Dropdown.value); UpdateOutputCubeColor(); });
+        input2Dropdown.onValueChanged.AddListener(delegate { UpdateCubeColor(cube2, input2Dropdown.value); UpdateOutputCubeColor(); });
+    }
+
+    void ChangeActivePerceptron(int index)
+    {
+
+        activePerceptron = index switch
+        {
+            1 => perceptronAND,
+            0 => perceptronOR,
+            2 => perceptronNAND
+        };
+    }
+
+    void UpdateCubeColor(GameObject cube, int value)
+    {
+        Color color = value == 1 ? Color.white : Color.black;
+        cube.GetComponent<Renderer>().material.color = color;
+    }
+
+    void UpdateOutputCubeColor()
+    {
+        double output = activePerceptron.CalcOutput(input1Dropdown.value, input2Dropdown.value);
+        UpdateCubeColor(cube3, output == 1 ? 1 : 0);
+    }
+}
+
+```
+</details>
 
 
 ## Выводы
 
-Абзац умных слов о том, что было сделано и что было узнано.
+В этой работе я ознакомилсяс принципом работы перцептрона, обучил его логическим функциям OR, AND, NAND. Сделал сцену на юнити с визуализацией его работы.
 
 | Plugin | README |
 | ------ | ------ |
